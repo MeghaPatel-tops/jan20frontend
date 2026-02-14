@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .first::first-letter{
+            color: blue;
+            font-size: 2em;
+        }
+        .sec::first-line{
+            color: red;
+        }
+        h1::before{
+            content: '✨';
+        }
+         h1::after{
+            content: '✨';
+        }
+        .sec::selection{
+            background-color: black;
+            color: white;
+        }
+        
+    </style>
+</head>
+<body>
+    <h1>Tops Technology</h1>
+    <p class="first">Welcome to Tops Tech</p>
+    <p class="sec">Welcome to Tops Tech <br> Lorem ipsum dolor sit amet consectetur adipisicing elit. Sed itaque molestiae pariatur deserunt, tenetur nisi, deleniti exercitationem laborum aut quia eligendi amet vel temporibus in, voluptatibus delectus nobis et ut.</p>
+</body>
+</html>
