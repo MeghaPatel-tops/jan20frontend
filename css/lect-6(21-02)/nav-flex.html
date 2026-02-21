@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css">
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        nav{
+            width: 100%;
+            /* background:linear-gradient(to right, black,rgb(125, 122, 122) 30%); */
+            background-color: black;
+            color: white;
+            height: 80px;
+            display: flex;
+            justify-content: space-between;
+            padding: 0px 100px;
+            align-items: center;
+        }
+        .logo label{
+            font-size: 2em;
+            font-weight: bolder;
+        }
+        .nav-list ul{
+            display: flex;
+            gap: 20px;
+        }
+        .nav-list ul li{
+            list-style: none;
+        }
+        nav a{
+            text-decoration: none;
+            color: white;
+        }
+        .nav-end{
+            display: flex;
+            gap: 20px;
+        }
+        .nav-end input{
+             padding: 10px 10px;
+             border-radius: 20px;
+             border: none;
+        }
+        .serach-div{
+            position: relative;
+        }
+        .nav-end .serach{
+             padding: 10px 10px;
+             border-radius: 20px;
+             position: absolute;
+             right: 0;
+             border: none;
+             background-color:gray;
+             color: white;
+        }
+        .nav-end .login{
+            position: static;
+            padding: 10px 10px;
+             border-radius: 20px;
+             border: none;
+        }
+
+        .container{
+            padding: 100px;
+            background-color: rgb(247, 245, 245);
+            display: flex;
+            /* flex-wrap: wrap; */
+            gap: 30px;
+        }
+        .box{
+            height: 400px;
+             width: 100%;
+            border-radius: 20px;
+        }
+        #box-1{
+            background-color: aqua;
+            border:5px solid rgb(48, 109, 109);
+
+        }
+        #box-2{
+            background-color: rgb(143, 180, 143);
+            border:5px solid rgb(67, 103, 67) ;
+
+        }
+        #box-3{
+            background-color: rgb(185, 156, 101);
+            border:5px solid rgb(152, 118, 54);
+
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="logo">
+            <label for="">MDevelopers</label>
+        </div>
+        <div class="nav-list">
+            <ul>
+                <li><a href="">Home</a></li>
+                <li><a href="">About</a></li>
+                <li><a href="">Contact</a></li>
+                <li><a href="">Service</a></li>
+            </ul>
+        </div>
+        <div class="nav-end">
+            <div class="serach-div">
+                <input type="text" name="" id="" placeholder="Serach">
+            <button class="serach"><i class="fa-solid fa-magnifying-glass"></i></button>
+            </div>
+             <button class="login">login</button>
+           
+        </div>
+    </nav>
+
+    <div class="container">
+       <div class="box" id="box-1">Box-1</div>
+       <div class="box" id="box-2">Box-2</div>
+       <div class="box" id="box-3">Box-3</div>
+    </div>
+</body>
+</html>
