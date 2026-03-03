@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+   <style>
+       
+        .box{
+            text-align: center;
+            width: 100%;
+            border: 10px solid black;
+          
+            display: grid;
+            grid-template-areas: "header header header header header"
+                       "aside main main main main" 
+                       "footer footer footer footer footer";
+        }
+        .header{
+            padding: 10px 0px;
+            grid-area: header;
+            background-color: black;
+            color: white;
+        }
+        .navItem{
+            padding: 10px 0px;
+        }
+          .navItem:hover{
+              background-color: white;
+          }
+          .navItem:hover a{
+              
+              color: black;
+          }
+        .navItem a{
+            color:  white;
+            font-size: 1em;
+        }
+        .aside{
+            grid-area: aside;
+            height: 200px;
+           background-color: rgb(38, 36, 36);
+        }
+        .main{
+            grid-area: main;
+            background-color: white;
+            height: 200px;
+        }
+        .footer{
+            padding: 20px 0px;
+            grid-area: footer;
+             background-color: black;
+            color: white;
+        }
+        .row{
+            padding: 20px;
+            display: flex;
+            justify-content: space-evenly;
+        }
+        .col{
+            padding: 30px 20px;
+            border: 5px solid black;
+          
+        }
+   </style>
+</head>
+<body>
+   <div class="box">
+    <div class="header">
+        <h2>Admin Dashbord</h2>
+    </div>
+    <div class="aside">
+        <nav>
+            <div class="navItem"><a href="">Item-1</a></div>
+            <div class="navItem"><a href="">Item-2</a></div>
+            <div class="navItem"><a href="">Item-3</a></div>
+            <div class="navItem"><a href="">Item-4</a></div>
+            <div class="navItem"><a href="">Item-5</a></div>
+        </nav>
+    </div>
+    <div class="main">
+          <h2>Dashbord</h2>
+          <div class="row">
+              <div class="col">Totaluser:</div>
+              <div class="col">TotalProduct</div>
+              <div class="col">Sale</div>
+              <div class="col">Review</div>
+          </div>
+    </div>
+    <div class="footer">Footer</div>
+   </div>
+</body>
+</html>
