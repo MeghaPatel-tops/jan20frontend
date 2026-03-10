@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+         #img1{
+             height: 100px;
+             width: 150px;
+             /* transform: rotateY(180deg); */
+             animation-name: img1bounce;
+             animation-delay: 2s;
+             animation-duration: 5s;
+             animation-iteration-count: infinite;
+             animation-timing-function: ease-in-out
+             /* animation-direction: alternate; */
+         }
+
+         @keyframes img1bounce {
+           
+              0%{
+                  transform: translateX(0px) rotateY(180deg) ;
+              }
+             25%{
+                transform:  translateX(1200px) rotateY(180deg);
+              }
+                50%{
+                  transform: translateX(1200px) ;
+              }
+             51%{
+                transform:translateX(1200px) rotateY(0deg);
+              } 
+              100%{
+                transform: translateX(0px) rotateY(0deg);
+              }
+         }
+
+    </style>
+</head>
+<body>
+    <img src="cat1.jpg" alt="" id="img1">
+</body>
+</html>
