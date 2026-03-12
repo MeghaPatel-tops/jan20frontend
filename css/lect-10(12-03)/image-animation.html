@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .hero-div{
+            height: 600px;
+           
+            background:linear-gradient(to left, rgb(150, 95, 95),rgb(177, 82, 82)
+            );
+            color: white;
+          
+        }
+        .hero-div img{
+              height: 400px;
+              width: 400px;
+              transform: translateX(-400px);
+              animation: imgAni;
+              animation-delay: 0s;
+              animation-duration: 2s;
+              animation-fill-mode: forwards;
+              margin-top: 100px;
+
+
+        }
+
+        @keyframes imgAni {
+            0%{
+                transform: translate(-400px) rotate(180deg);
+            }
+            100%{
+                transform: translate(50px) rotate(360deg);
+            }
+        }
+        
+      
+    </style>
+</head>
+<body>
+    <div class="hero-div">
+        <div class="hero-text">
+                <img src="plate.png" alt="">
+        </div>
+    </div>
+   
+</body>
+</html>

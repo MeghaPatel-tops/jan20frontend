@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .hero-div{
+            height: 600px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background:linear-gradient(to left, rgb(150, 95, 95),rgb(177, 82, 82)
+            );
+            color: white;
+          
+        }
+        .hero-text{
+              animation: textTranform;
+            animation-delay: 0s;
+            animation-duration: 1s;
+            animation-fill-mode: forwards;
+            
+        }
+        @keyframes textTranform {
+            0%{
+                transform: translateY(0px);
+            }
+            100%{
+                transform: translateY(-30px);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="hero-div">
+        <div class="hero-text">
+            <h1>Welocme to app</h1>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+            <button>Contact us</button>
+        </div>
+    </div>
+   
+</body>
+</html>
