@@ -1,0 +1,43 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}
+body{
+    position: relative;
+}
+.hero-div{
+    height: 600px;
+    background-image: url(images/header_1.jpg);
+    background-size: 100% 100%;
+}
+nav{
+    width: 100%;
+   
+    padding: 0px 100px;
+    position: fixed;
+    top: 10px;
+    
+   
+}
+.logo-div{
+     background-color: white;
+     padding: 10px 20px;
+    display: flex;
+    justify-content: flex-start;
+    gap: 20px;
+     border-radius: 20px;
+}
+
+.first li{
+    width: 100px;
+    display: inline-block;
+}
+.sec{
+    margin-left: auto;
+}
+.sec li{
+    width: 50px;
+    display: inline-block;
+}
