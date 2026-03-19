@@ -89,6 +89,12 @@ nav {
 
 
 }
+.hero-content,.hero-btn{
+      animation: moveRight;
+      animation-duration: 1s;
+      animation-timing-function: linear;
+      animation-fill-mode: forwards;
+}
 .hero-content h1{
      font-size: 3em;
 }
@@ -138,4 +144,106 @@ nav {
 .about .row p{
     padding: 10px;
     text-align: justify;
+}
+/* ========================Services============ */
+.service-img{
+    width: 100%;
+    height: 500px;
+    background: linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.5)),url('images/banner1.jpg');
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+
+}
+.service-img h2{
+     font-size: 4em;
+     text-align: center;
+     font-weight: 200;
+     letter-spacing: 2px;
+}
+.service-img p{
+     font-size: 2em;
+     text-align: center;
+     font-weight: 200;
+     letter-spacing: 2px;
+}
+.service-text{
+      padding: 100px;
+      display: flex;
+      justify-content: center;
+      
+}
+.service-text div{
+  
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 0px 100px;
+    line-height: 600%;
+}
+
+.service-text div h3{
+    font-size: 3rem;
+    font-weight: 200;
+}
+
+.service-text div p{
+    font-size: 1.5rem;
+    line-height: 120%;
+}
+.service-grid{
+    width: 100%;
+    padding: 100px;
+    display: grid;
+    gap: 20px;
+    grid-template-areas: 'first first'
+                        'sec  third';
+}
+.service-grid img{
+    width: 100%;
+    height: 400px;
+}
+#img1{
+    grid-area: first;
+}
+#img2{
+    grid-area: sec;
+}
+#img3{
+    grid-area: third;
+}
+
+.icon-div{
+    display: flex;
+    justify-content: center;
+     padding: 50px 100px;
+    background-color: rgb(174, 170, 170);
+}
+.icon-div button{
+    background-color: transparent;
+    border: none;
+    font-size: 2em;
+    color: rgb(62, 60, 60);
+}
+.footer-text{
+    background-color: rgb(11, 11, 29);
+    color: white;
+    text-align: center;
+    padding: 100px 0px;
+}
+.footer-text p{
+     font-size: 1.5em;
+}
+
+@keyframes moveRight {
+    0%{
+        transform: translateX(-10px);
+    }
+    100%{
+        transform: translateX(10px);
+    }
 }
