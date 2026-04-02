@@ -1,0 +1,20 @@
+.hero{
+    height: 700px;
+    background: linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.5)),url(images/header-1.jpg);
+    /* //background-image: url(images/header-1.jpg); */
+    background-size: 100% 100%;
+}
+.navBg{
+    background-color: rgba(0,0,0,0.5);
+    z-index: 1;
+}
+
+*::selection{
+    background-color: rgb(205, 124, 124);
+    color:white
+}
+.video-div{
+    height: 400px;
+    background-image: linear-gradient(rgba(0,0,0,0.3),rgba(0,0,0,0.3)),url(images/video-thum.jpg);
+    background-size: 100% 100%;
+}
