@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+         function promptExample(){
+            let num = prompt('Enter Number');
+            let msg = (num > 0)?'postive':'negative';
+            alert(msg)
+            if(num % 2 == 0){
+                alert('num is even')
+            }
+            else{
+                alert('num is odd')
+            }
+        }
+        function findQuadrnat(){
+            let x1= prompt('Enter x1');
+            let x2 = prompt('Enter x2');
+
+            if(x1 > 0 && x2 >0){
+                alert('first');
+            }
+            else if(x1 < 0 && x2 > 0){
+                alert('sec');
+            }
+            else if(x1 < 0 && x2 < 0){
+                alert('third')
+            }
+            else if(x1 > 0 && x2 <0){
+                alert('forth')
+            }
+            else{
+                alert('center line')
+            }
+        }
+    </script>
+</head>
+<body>
+    <button onclick="promptExample()">Prompt Example</button>
+    <button onclick="findQuadrnat()">Find Quadrant</button>
+</body>
+</html>
