@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <fieldset>
+         <legend>Create Table</legend>
+         <label for="">Enter Number</label>
+         <input type="text" name="" id="num">
+         <button onclick="printTable()">Create</button>
+         <div id="result"></div>
+    </fieldset>
+    <fieldset>
+         <legend>Genrate Fibonaci</legend>
+         <button onclick="printFibo()">Genrate</button>
+         <div id="result1"></div>
+    </fieldset>
+     <fieldset>
+         <legend>Find reverse num</legend>
+         <label for="">Enter Number</label>
+         <input type="text" name="" id="num2">
+         <button onclick="findReverse()">Create</button>
+         <div id="result3"></div>
+    </fieldset>
+
+
+    <script>
+        function printTable(){
+            let num1 = document.getElementById('num').value;
+            let str="";
+            for(i=1;i<=10;i++){
+                 str+= `${num1}*${i}=${num1*i}<br>`
+            }
+            document.getElementById('result').innerHTML=str;
+        }
+        function printFibo(){
+            let x1=0;
+            let x2 =1;
+            let str = `${x1},${x2},`;
+            for(let m=1;m<=10;m++){
+                let ans = x1+x2;
+                str+=`${ans},`;
+                x1=x2;
+                x2=ans;
+            }
+            document.getElementById('result1').innerHTML=str;
+            
+        }
+        function findReverse(){
+            let num1 = document.getElementById('num2').value;
+            let a=0;
+            let rev=0
+            while(num1!=0){
+              let rem = num1%10;
+               rev = rev*10+rem;
+              num1 = parseInt(num1/10);
+            }
+            str=`<b>Revaerse Number :${rev}</b>`
+            document.getElementById('result3').innerHTML=str;
+        }
+    </script>
+</body>
+</html>

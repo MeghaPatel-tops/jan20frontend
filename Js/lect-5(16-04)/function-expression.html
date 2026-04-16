@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button onclick="checkNum(Even,odd)">Clik me</button>
+    <script>
+        let printMsg = function(){
+            console.log('hello wolrd');
+            
+        }
+
+       printMsg();
+
+       function checkNum(Even,odd){
+             let num = prompt('Enter num');
+             if(num%2==0){
+                Even()
+             }
+             else{
+                odd()
+             }
+       }
+
+       function Even(){
+           console.log('num is even');
+           
+       }
+
+       function odd(){
+           console.log("num is odd");
+           
+       }
+
+       //arrow function
+       let mul = (x,y)=>x*y;
+
+       console.log(mul(2,3));
+
+       let area = (r)=>{
+             a= 3.14*r*r;
+             return a;
+       }
+       
+       console.log(area(3));
+       
+       
+       
+        
+    </script>
+</body>
+</html>

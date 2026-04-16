@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box{
+            height: 100px;
+            width: 100px;
+            border: 2px solid black;
+            margin: 20px;
+        }
+    </style>
+</head>
+<body>
+    <p id="para1">Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquid quam itaque non molestias dolorem nesciunt sunt fugiat error doloribus? Quisquam excepturi dolores suscipit asperiores nemo, possimus quos eius odit similique.</p>
+    <button onclick="colorChanger()">chage text color</button>
+
+    <div class="box"></div>
+    <div class="box"></div>
+    <div class="box"></div>
+    <div class="box"></div>
+    <div class="box"></div>
+ <button onclick="pickAllClass()">chage text color</button>
+
+
+    <script>
+        function colorChanger(){
+            let p1 = document.getElementById('para1');
+            console.log(p1);
+            p1.style.color='white';
+            p1.style.backgroundColor='black'
+            
+        }
+        function pickAllClass(){
+            let boxArray = document.getElementsByClassName('box');
+            for(i=0;i<boxArray.length;i++){
+                if(i%2==0){
+                    boxArray[i].style.backgroundColor="black"
+                }
+                else{
+                    boxArray[i].style.backgroundColor="gray"
+                }
+            }
+            
+        }
+    </script>
+</body>
+</html>

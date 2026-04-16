@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>
+        const pi=3.14;//Outer global 
+        //Function example
+        function printMsg(){
+            console.log('hello world');
+        }
+        printMsg();
+
+        //function with parameter
+        function add(x,y){
+            console.log(`addition of ${x} and ${y}= ${x+y}`);
+            
+        }
+        add(100,300);
+
+        //function returing value
+        function square(num){
+            return num*num;
+        }
+
+        let s=square(12);
+        console.log(s);
+
+        console.log(square(25));
+
+        //localvarible & outervarible
+        function areaOfCircle(){
+            let r = prompt('Enter radius');//local varible
+            let area = pi*r*r;
+            console.log('area of circle=',area);    
+        }
+      
+        areaOfCircle();
+      
+        //default value
+        function multipy(x,y,z=1){
+            let m= x*y*z;
+            console.log('multiply=',m);    
+        }
+        multipy(12,2);
+        multipy(1,2,3);
+        
+        
+    </script>
+</body>
+</html>
