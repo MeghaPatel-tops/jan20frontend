@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <p id="para1">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Cupiditate, dicta? Soluta explicabo quod, quam quo odio blanditiis eius ipsam alias at totam sint cupiditate quasi voluptatum natus ea recusandae voluptatibus.</p>
+    <button onclick="changeTextP()">Change Text</button>
+
+  <fieldset>
+       <legend>Invoice Maker</legend>
+       <form >
+           <label for="">Product Name</label>
+           <input type="text" name="" id="pname">
+           <br><br>
+            <label for="">Price</label>
+           <input type="text" name="" id="price">
+           <br><br>
+            <label for="">Qty</label>
+           <input type="text" name="" id="qty">
+           <br><br>
+           <button type="button" onclick="genBill()">Click</button>
+       </form>
+        <table>
+            <thead>
+                <tr>
+                    <th>Productname</th>
+                    <th>Price</th>
+                    <th>Qty</th>
+                    <th>Subtotal</th>
+                </tr>
+              
+            </thead>
+            <tbody id="pdata">
+
+            </tbody>
+        </table>
+  </fieldset>
+
+
+    <script>
+        function changeTextP(){
+            let text1 = prompt('Enter text');
+            let p1 = document.getElementById('para1');
+            p1.textContent=text1;
+
+        }
+
+        function genBill(){
+            let pname = document.getElementById('pname').value;
+            let price = document.getElementById('price').value;
+            let qty = document.getElementById('qty').value;
+
+            let str = `
+                  <tr>
+                    <td>${pname}</td>
+                    <td>${price}</td>
+                    <td>${qty}</td>
+                    <td>${price*qty}</td>
+                </tr>
+            `;
+            document.getElementById('pdata').innerHTML=str;
+            
+        }
+    </script>
+</body>
+</html>

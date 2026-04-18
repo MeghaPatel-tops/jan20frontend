@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .light{
+            width: 100%;
+            height: 500px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: white;
+            color: black;
+        }
+         .dark{
+            width: 100%;
+            height: 500px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: black;
+            color: white;
+        }
+        .box{
+            height: 100px;
+            width: 100px;
+            background-color: red;
+        }
+        .circle{
+            border-radius: 50%;
+        }
+    </style>
+</head>
+<body>
+    <div class="box" id="box1"></div>
+    <button onclick="makeCircle()">Make Circle</button>
+    <hr>
+    <button onclick="themeChange()">Change Theme</button>
+    <div id="div1" class="light">
+        <h1>Welocme to tops tech</h1>
+    </div>
+
+    <script>
+        function themeChange(){
+            let attrName = document.getElementById('div1').getAttribute('class');
+            let newStyle = attrName=='light'?'dark':'light';
+            console.log(attrName);
+            console.log(newStyle);
+            document.getElementById('div1').setAttribute('class',newStyle)
+                
+        }
+        function makeCircle(){
+            let box1 = document.getElementById('box1').classList.toggle('circle')
+        }
+    </script>
+</body>
+</html>

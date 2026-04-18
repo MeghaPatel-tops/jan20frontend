@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button onclick="createPara()">Craete Paragraph</button>
+    <div id="result">
+        <h1>Tops tech</h1>
+    </div>
+
+    <fieldset>
+        <legend>Event handling</legend>
+        <button id="btn">Click</button>
+        <br>
+        <br>
+        <input type="text" name="" id="uname">
+
+        <form id="frm1">
+            <input type="submit" value="submit">
+        </form>
+    </fieldset>
+
+    <script>
+        function createPara(){
+            let p1 = document.createElement('p');
+            console.log(p1);
+            p1.innerText="Welcome to tops"
+            document.getElementById('result').appendChild(p1);
+            
+        }
+
+        document.getElementById('btn').addEventListener('click',function(){
+            alert('btn click')
+        })
+
+        document.getElementById('uname').addEventListener('change',function(e){
+            console.log(e.target.value);
+            
+        })
+
+        document.getElementById('frm1').addEventListener('submit',function(e){
+            e.preventDefault();
+            console.log('form submitted');
+            
+        })
+    </script>
+</body>
+</html>
