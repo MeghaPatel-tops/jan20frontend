@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+
+    <script>
+        let user ={
+            name:"megha",
+            email:'m@gmail.com'
+        }
+        user.city="surat"
+
+        console.log(user);
+        console.log(user.name);
+        delete user.city;
+        console.log(user);
+
+        user['contact']="090909090";
+        console.log(user);
+
+        for(index in user){
+            console.log(index);
+            console.log(user[index])
+            
+        }
+
+        let obj1={
+            name:'abc'
+        }
+
+        let obj2=obj1;
+
+        console.log(obj2);
+
+        obj2.name="xyz";
+
+        console.log(obj1);
+
+
+        let product={
+            pname:'laptop'
+        }
+
+        Object.assign(product,{descip:'test'});
+
+        console.log(product);
+
+        let newProduct ={};
+
+        for(key in product){
+            newProduct[key]=product[key];
+        }
+
+        console.log("new product",newProduct);
+
+        newProduct.descip="leneovo"
+
+         console.log("new product",newProduct);
+
+          console.log("original product",product);
+        
+        
+        
+        
+
+        
+        
+    </script>
+</body>
+</html>

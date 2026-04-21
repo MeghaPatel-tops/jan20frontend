@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+
+    <script>
+        function Product(pname,price){
+            this.pname=pname;
+            this.price=price;
+        }
+
+        
+        
+
+        let p1 = new Product('laptop',"2099999");
+        console.log(p1);
+        //optional chaining
+        console.log(p1.addreess ? p1.addreess : 'dummy');
+
+        let p2 = new Product('mouse',200);
+        console.log(p2);
+
+
+        
+        
+    </script>
+</body>
+</html>
