@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>
+        let salary = [25000,20000,10000,13000,50000];
+
+        let newSalary = salary.map(function(index,i){
+              let upSal = index + (index * 0.1);
+              return upSal
+        })
+
+        console.log(newSalary);
+
+        let total = salary.reduce(function(sum,index,i){
+              sum = Number(sum) + Number(index);
+
+              return sum
+        },[0])
+
+        console.log(total);
+        
+
+        let numArray =[1,2,0,11,23,3,35];
+
+        function comp(a,b){
+            if(a > b) return 1;
+            if(a == b) return 0;
+            if(a < b) return -1
+        }
+
+        console.log(numArray.sort(comp));
+
+        console.log(numArray.sort((a,b)=>b-a));
+        
+        
+        
+    </script>
+</body>
+</html>

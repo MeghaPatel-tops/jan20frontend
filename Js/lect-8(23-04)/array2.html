@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <ul id="fruitslist">
+
+    </ul>
+
+    <script>
+        let fruits = ['apple','banana','kiwi','mango','chiku'];
+
+        console.log(fruits);
+
+         console.log(fruits.slice(1,3));
+        
+        fruits.splice(1,0,"mongo");//index,0 for delecount,manog element add
+
+        console.log(fruits);
+
+        fruits.splice(2,1);
+        console.log(fruits);
+
+        fruits.splice(2,1,'graps');
+        console.log(fruits);
+
+        //====================
+
+        console.log([1,3].concat([2,4]));
+
+        fruits.forEach(function(index,i,fruits){
+            console.log(index.toUpperCase());
+            
+        })
+        let str='';
+         fruits.forEach(function(index,i,fruits){
+             str+=`<li>${index}</li>`
+        })
+        document.getElementById('fruitslist').innerHTML=str
+
+        console.log('indexof',fruits.indexOf('graps'));
+
+         console.log('include yes or no',fruits.includes('muskmallon'));
+        
+
+       
+        
+
+
+       
+        
+        
+        
+        
+        
+        
+        
+        
+    </script>
+</body>
+</html>

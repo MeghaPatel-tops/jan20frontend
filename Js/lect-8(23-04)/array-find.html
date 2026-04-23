@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+   <input type="text" name="" id="txt1">
+ <ul id="fruitslist">
+
+    </ul>
+    <script>
+        let fruits = ['apple','banana','kiwi','mango','chiku','avacado'];
+        document.getElementById('txt1').addEventListener('keyup',function(e){
+            let char = e.target.value;
+            // let newArray = fruits.find(function(index,i){
+            //     if(index.startsWith(char)){
+            //         return index
+            //     }
+            // });
+             let newArray = fruits.filter(function(index,i){
+                if(index.startsWith(char)){
+                    return index
+                }
+            });
+            console.log(newArray);
+            printList(newArray)
+            
+            
+        })
+        
+        
+        function printList(fruits){
+            let str='';
+            fruits.forEach(function(index,i,fruits){
+                str+=`<li>${index}</li>`
+            })
+            document.getElementById('fruitslist').innerHTML=str
+        }
+        window.onload = printList(fruits)
+    </script>
+</body>
+</html>
