@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>
+        class User{
+            constructor(name,email){
+                this.name= name;
+                this.email=email
+            }
+
+            printUser(){
+                console.log(`username:${this.name} and email=${this.email}`);
+                
+            }
+        }
+
+        let u1 = new User('Mohit','mohit@gmail.com');
+        u1.printUser();
+    </script>
+</body>
+</html>

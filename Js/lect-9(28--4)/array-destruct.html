@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <fieldset>
+        <label for="">Enter full name staring with surname name lastname</label>
+        <br>
+        <input type="text" name="" id="txt">
+        <button type="button" id="btn1">submit</button>
+    </fieldset>
+
+
+    <script>
+        document.getElementById('btn1').addEventListener('click',function(){
+            let fullname = document.getElementById('txt').value;
+
+            let user = {};
+            [user.fname="NA",user.name="NA",user.lname="NA"]=fullname.split(" ");
+
+            console.log(user);
+
+            let {height, width, title} = { title: "Menu", height: 200, width: 100 }
+            
+           
+            
+        })
+
+        let options = {
+            size: {
+                width: 100,
+                height: 200
+            },
+            items: ["Cake", "Donut"],
+            extra: true
+            };
+
+            console.log(options);
+            let {size,items,extra} = options;
+
+            console.log(size.width);
+            
+            
+    </script>
+</body>
+</html>

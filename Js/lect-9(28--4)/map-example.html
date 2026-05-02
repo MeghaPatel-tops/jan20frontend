@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+
+    <script>
+        let product = new Map();
+        product.set('pname','laptop');
+        product.set(true,1);
+
+        console.log(product);
+
+        let category={
+            cid:123,
+            catname:'fruits',
+            cimage:'fruits.png'
+        }
+
+        let objKeys = Object.keys(category);
+        console.log(objKeys);
+
+        let objValues = Object.values(category);
+        console.log(objValues);
+
+        let objEntries = Object.entries(category);
+        console.log(objEntries);
+
+        let fruist = ['apple','banana','kiwi'];
+        console.log(fruist[1]);
+
+        let [ffru,secfru,third]= fruist;
+
+        console.log(ffru);
+
+        ffru='mango';
+
+       
+
+        console.log(fruist);
+        
+        
+        
+        
+        
+        
+        
+    </script>
+</body>
+</html>

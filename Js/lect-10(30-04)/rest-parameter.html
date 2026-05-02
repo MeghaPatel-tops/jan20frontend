@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+
+    <script>
+        function add(a,b,...rest){
+            console.log("total argumenst",arguments);
+            
+            let sum = a+b;
+            for(i of rest){
+                sum+=i;
+            }
+            console.log(sum);
+            
+        }
+
+        add(1,2,3);
+        add(1,2,3,4,5);
+
+
+        let num =[12,34,6];
+        console.log(Math.max(...num));
+
+        let newArray = [...num,17];
+        console.log(newArray);
+        
+        
+    </script>
+</body>
+</html>

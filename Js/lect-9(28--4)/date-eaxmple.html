@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            height: 500px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .box{
+            padding: 100px 150px;
+            background-color: brown;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <div class="box" id="box"></div>
+    <script>
+        function printDate(){
+              let cTime = new Date();
+        
+        
+
+        let customeDate = `${cTime.getFullYear()}-${cTime.getMonth() + 1}-${cTime.getDate()} ${cTime.getHours()}:${cTime.getMinutes()}:${cTime.getSeconds()}`;
+
+        document.getElementById('box').innerHTML=customeDate
+
+
+        
+        }
+
+        let cTime = new Date();
+        
+        cTime.setHours(cTime.getHours()+8)
+        console.log(cTime);
+        
+        setInterval(printDate,1000);
+    </script>
+</body>
+</html>

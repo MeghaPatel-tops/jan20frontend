@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>
+        class User{
+            constructor(name,email){
+                this.name= name;
+                this.email=email
+            }
+
+            printUser(){
+                console.log(`username:${this.name} and email=${this.email}`);
+                
+            }
+        }
+
+        class Employee extends User{
+            constructor(empid,salary,name,email){
+                super(name,email)
+                this.empid=empid;
+                this.salary = salary;
+            }
+
+            printEmployee(){
+                console.log(`You empi id=${this.empid} and salary = ${this.salary}`);
+                
+            }
+        }
+
+        let emp1 = new Employee('emp-123',21000,'Mohit','m@gmail.com');
+        emp1.printUser();
+        emp1.printEmployee();
+
+
+        class Test{
+              
+             printMsg(){
+                console.log('parent class method');
+  
+             }
+  
+        }
+
+        class Test2 extends Test{
+             printMsg(){
+                super.printMsg()
+                console.log('child class method');
+  
+             }
+        }
+
+        let t1 = new Test2();
+        t1.printMsg()
+
+       
+
+         
+
+        
+    </script>
+</body>
+</html>
