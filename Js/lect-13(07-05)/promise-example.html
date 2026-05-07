@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+
+    <script>
+        let myPromise = new Promise((resolve,reject)=>{
+            let status = prompt('Enter staus code');
+
+            if(status==200){
+                resolve('Task done')
+            }
+            else if(status == 411){
+                 throw new Error('unauthorized access');
+            }
+            else{
+                 reject('Something wrong')
+            }
+        })
+
+        myPromise
+        .then((msg)=>{
+            console.log(msg);
+            
+        })
+        .catch((err)=>{
+            console.log(err);
+            
+        })
+    </script>
+</body>
+</html>
