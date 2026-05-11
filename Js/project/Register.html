@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Bootstrap Example</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+    <style>
+        .div-pwd-error p {
+            color: red;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container-fluid bg-body d-flex justify-content-center">
+        <div class="container mt-5 border border-5 p-5 rounded" style="width: 600px !important;">
+            <h2>Register Form</h2>
+            <form method="post" id="regForm">
+                <div class="mb-3 mt-3" id="username-div">
+                    <label for="email">Username:</label>
+                    <input type="text" class="form-control" id="username" placeholder="Enter Username" name="username">
+                </div>
+                <div class="mb-3 mt-3" id="email-div">
+                    <label for="email">Email:</label>
+                    <input type="email" class="form-control" id="email" placeholder="Enter email" name="email">
+                </div>
+                <div class="mb-3" id="pwd-div">
+                    <label for="pwd">Password:</label>
+                    <input type="password" class="form-control" id="pwd" placeholder="Enter password" name="pswd">
+                    <div class="div-pwd-error" id="errorLog" style="display: none;">
+                        <p id="up">UpparCase</p>
+                        <p id="lw">LowerCase</p>
+                        <p id="num">Number</p>
+                        <p id="spe">Special Symbol</p>
+                        <p id="mxch">Max char >8</p>
+                    </div>
+                </div>
+                <div class="form-check mb-3">
+                    <p>Already User <a href="Login.html">Login</a></p>
+                </div>
+                <button type="submit" class="btn btn-primary" id="regbtn">Submit</button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('pwd').addEventListener('focus', function () {
+            document.getElementById('errorLog').style.display = "block"
+        })
+        document.getElementById('pwd').addEventListener('keyup', function (e) {
+            let val = e.target.value;
+            if (/[a-z]/.test(val)) {
+                document.getElementById('lw').style.color = "   green"
+            }
+            if (/[A-Z]/.test(val)) {
+                document.getElementById('up').style.color = "   green"
+            } if (/[0-9]/.test(val)) {
+                document.getElementById('num').style.color = "   green"
+            } if (/[!@#$%^&*(),.?":{}|<>]/.test(val)) {
+                document.getElementById('spe').style.color = "   green"
+            } if ( /.{8,}/.test(val)) {
+                document.getElementById('mxch').style.color = "   green"
+            }
+           
+        })
+        function validate(user) {
+            const regex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
+
+            const regexEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (user.username == "") {
+                let p1 = document.createElement('p');
+                p1.style.color = "red";
+                p1.innerText = "Username Required";
+                p1.setAttribute('id', 'unameError')
+                document.getElementById('username-div').appendChild(p1)
+                return false;
+            }
+            else {
+                let p1 = document.getElementById('unameError') ?? ''
+                p1 ? document.getElementById('username-div').removeChild(p1) : ''
+            }
+            if (!regexEmail.test(user.email)) {
+                let p1 = document.createElement('p');
+                p1.style.color = "red";
+                p1.innerText = "Enter Valid Email ex:'abc@gmail.com'";
+                p1.setAttribute('id', 'emailError')
+                document.getElementById('email-div').appendChild(p1)
+                return false;
+            }
+            else {
+                let p1 = document.getElementById('emailError')
+                p1 ? document.getElementById('email-div').removeChild(p1) : ''
+            }
+            if (!regex.test(user.pwd)) {
+                let p1 = document.createElement('p');
+                p1.style.color = "red";
+                p1.innerText = "Enter Valid password ";
+                p1.setAttribute('id', 'pwdError')
+                document.getElementById('pwd-div').appendChild(p1)
+                return false;
+            }
+            else {
+                let p1 = document.getElementById('pwdError')
+                p1 ? document.getElementById('pwd-div').removeChild(p1) : '    '
+            }
+
+
+            return true
+        }
+        document.getElementById('regForm').addEventListener('submit', function (event) {
+            event.preventDefault();
+            let username = document.getElementById('username');
+            let email = document.getElementById('email');
+            let pwd = document.getElementById('pwd')
+            let user = {
+                username: username.value,
+                email: email.value,
+                pwd: pwd.value
+            }
+            if (validate(user)) {
+                let oldArray = localStorage.getItem('users');
+                if (oldArray) {
+                    oldArray = JSON.parse(oldArray);
+                    oldArray.push(user)
+                    console.log(oldArray);
+                    localStorage.setItem('users', JSON.stringify(oldArray))
+                }
+                else {
+                    let UserArray = [];
+                    UserArray.push(user);
+                    console.log(UserArray);
+
+                    localStorage.setItem('users', JSON.stringify(UserArray))
+                }
+                username.value = "";
+                email.value = "";
+                pwd.value = ""
+
+
+
+            }
+        })
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Bootstrap Example</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+    <style>
+        .div-pwd-error p {
+            color: red;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container-fluid bg-body d-flex justify-content-center">
+        <div class="container mt-5 border border-5 p-5 rounded" style="width: 600px !important;">
+            <h2>Login Form</h2>
+            <form method="post" id="regForm">
+              
+                <div class="mb-3 mt-3" id="email-div">
+                    <label for="email">Email:</label>
+                    <input type="email" class="form-control" id="email" placeholder="Enter email" name="email">
+                </div>
+                <div class="mb-3" id="pwd-div">
+                    <label for="pwd">Password:</label>
+                    <input type="password" class="form-control" id="pwd" placeholder="Enter password" name="pswd">
+                   
+                </div>
+                <div class="form-check mb-3">
+                    <p>IF you dont have Account <a href="Register.html">SignUp</a></p>
+                </div>
+                <button type="submit" class="btn btn-primary" id="regbtn">Submit</button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('pwd').addEventListener('focus', function () {
+            document.getElementById('errorLog').style.display = "block"
+        })
+      
+        function validate(user) {
+
+            const regexEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+           
+            if (!regexEmail.test(user.email)) {
+                let p1 = document.createElement('p');
+                p1.style.color = "red";
+                p1.innerText = "Enter Valid Email ex:'abc@gmail.com'";
+                p1.setAttribute('id', 'emailError')
+                document.getElementById('email-div').appendChild(p1)
+                return false;
+            }
+            else {
+                let p1 = document.getElementById('emailError')
+                p1 ? document.getElementById('email-div').removeChild(p1) : ''
+            }
+            if (user.pwd == "") {
+                let p1 = document.createElement('p');
+                p1.style.color = "red";
+                p1.innerText = "Enter Valid password ";
+                p1.setAttribute('id', 'pwdError')
+                document.getElementById('pwd-div').appendChild(p1)
+                return false;
+            }
+            else {
+                let p1 = document.getElementById('pwdError')
+                p1 ? document.getElementById('pwd-div').removeChild(p1) : '    '
+            }
+
+
+            return true
+        }
+        document.getElementById('regForm').addEventListener('submit', function (event) {
+            event.preventDefault();
+          
+            let email = document.getElementById('email');
+            let pwd = document.getElementById('pwd')
+            let user = {
+               
+                email: email.value,
+                pwd: pwd.value
+            }
+            if (validate(user)) {
+               let userArray = localStorage.getItem('users');
+               if(userArray ){
+                    userArray= JSON.parse(userArray);
+                    let AuthUser = userArray.find((index)=>{
+                         if(index.email == user.email && index.pwd == user.pwd){
+                              return index;
+                         }
+                         
+                    })
+                    if(AuthUser){
+                         alert('Login Success')
+                        localStorage.setItem('loggedUser',JSON.stringify(AuthUser));
+                        window.location='index.html'
+                    }
+                    else{
+                            alert('Login fail')
+                         }
+                    
+                    
+               }
+                else{
+                            alert('Login fail')
+                         }
+            }
+        })
+    </script>
+
+</body>
+
+</html>
