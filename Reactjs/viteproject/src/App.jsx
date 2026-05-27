@@ -9,6 +9,11 @@ import { ComponyName, Details } from './Components/Comman'
 import Counter from './Components/Counter'
 import InlineCss from './Components/InlineCss'
 import Profile from './Components/Profile'
+import 'bootstrap/dist/css/bootstrap.min.css';
+import ProductCatalog from './Components/ProductCatalog'
+import Fruist from './Components/Fruist'
+
+
 
 function App() {
   const [count, setCount] = useState(0)
@@ -26,8 +31,10 @@ function App() {
           <legend>Counter app</legend>
           <Counter/>
       </fieldset> */}
-      <InlineCss />
-      <Profile/>
+      {/* <InlineCss />
+      <Profile/> */}
+      {/* <ProductCatalog/> */}
+      <Fruist/>
     </>
   )
 }
