@@ -38,7 +38,11 @@ function Fruist() {
         console.log(newArray);
         setFruits(newArray);
         setFname("")
-        setEdit(null)
+        setEdit(null
+
+
+            
+        )
         
     }
 

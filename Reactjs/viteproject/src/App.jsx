@@ -12,6 +12,7 @@ import Profile from './Components/Profile'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import ProductCatalog from './Components/ProductCatalog'
 import Fruist from './Components/Fruist'
+import Studentinfo from './Components/Studentinfo'
 
 
 
@@ -34,7 +35,8 @@ function App() {
       {/* <InlineCss />
       <Profile/> */}
       {/* <ProductCatalog/> */}
-      <Fruist/>
+      {/* <Fruist/> */}
+      <Studentinfo/>
     </>
   )
 }
