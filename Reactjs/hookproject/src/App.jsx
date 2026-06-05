@@ -9,6 +9,8 @@ import Parent from './Components/Parent'
 import { UserContext } from './UserContext'
 import Users from './Components/Users'
 import  ThemeProvide  from './Components/ThemeContext'
+import EditUser from './Components/EditUser'
+import CounterApp from './Components/CounterApp'
 
 function App() {
   const [count, setCount] = useState(0)
@@ -25,9 +27,11 @@ function App() {
       {/* <Users/>
        </UserContext.Provider> */}
 
-       <ThemeProvide >
+       {/* <ThemeProvide >
             <Parent userid={userid}/>
-       </ThemeProvide>
+       </ThemeProvide> */}
+       <EditUser/>
+       <CounterApp/>
     </>
   )
 }
