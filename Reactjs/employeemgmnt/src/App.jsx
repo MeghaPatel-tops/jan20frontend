@@ -7,6 +7,7 @@ import Home from './Components/Home'
 import Navbar from './Components/Navbar'
 import Employeeindex from './Components/Employeeindex'
 import EmpCreate from './Components/EmpCreate'
+import Counter from './Components/Counter'
 
 function App() {
   const [count, setCount] = useState(0)
@@ -16,6 +17,7 @@ function App() {
        <Navbar/>
         <Routes>
              <Route path='/' element={<Home/>}></Route>
+             <Route path='/counter' element={<Counter/>}></Route>
              <Route path='/employee' element={<Employeeindex/>}></Route>
              <Route path='/employee/create' element={<EmpCreate/>}></Route>
         </Routes>

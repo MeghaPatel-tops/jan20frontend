@@ -1,6 +1,43 @@
-import React from 'react'
+import axios from 'axios';
+import React, { useState } from 'react'
 
 function EmpCreate() {
+    const [emp,setEmp] = useState({empname:"",email:"",telephone:"",address:""});
+
+    const handleChange = (e)=>{
+        const {name,value}=e.target;
+        setEmp({
+            ...emp,
+            [name]:value
+        })
+    }
+
+    const handleClick=async()=>{
+      
+        try {
+               const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      
+        
+        if(emp.empname == ""){
+            alert("Enetr valid employee name")
+            return 
+        }
+        if(!emailRegex.test(emp.email)) {
+            alert("Enetr valid employee Email")
+            return 
+        }
+        const res = await axios.post('http://localhost:5000/employees', emp);
+        if(res){
+            console.log("Employe sucessfully added")
+        }
+        console.log("btn clicked");
+        
+        } catch (error) {
+            console.log(error);
+            
+        }
+          
+    }
     return (
       
             <div className="bg-gray-100 p-12">
@@ -11,8 +48,7 @@ function EmpCreate() {
                             Employee Form
                         </h2>
 
-                        <form class="space-y-4">
-
+                        
 
                             <div>
                                 <label class="block text-sm font-medium text-gray-700 mb-1">
@@ -20,56 +56,63 @@ function EmpCreate() {
                                 </label>
                                 <input
                                     type="text"
+                                    name='empname'
+                                    onChange={handleChange}
                                     placeholder="Enter employee name"
-                                    class="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                                    className="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
                                 />
                             </div>
 
 
                             <div>
-                                <label class="block text-sm font-medium text-gray-700 mb-1">
+                                <label className="block text-sm font-medium text-gray-700 mb-1">
                                     Email
                                 </label>
                                 <input
                                     type="email"
+                                    name='email'
+                                     onChange={handleChange}
                                     placeholder="Enter email"
-                                    class="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                                    className="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
                                 />
                             </div>
 
 
                             <div>
-                                <label class="block text-sm font-medium text-gray-700 mb-1">
+                                <label className="block text-sm font-medium text-gray-700 mb-1">
                                     Contact Number
                                 </label>
                                 <input
                                     type="tel"
+                                    name='telephone'
+                                     onChange={handleChange}
                                     placeholder="Enter contact number"
-                                    class="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                                    className="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
                                 />
                             </div>
 
 
                             <div>
-                                <label class="block text-sm font-medium text-gray-700 mb-1">
+                                <label className="block text-sm font-medium text-gray-700 mb-1">
                                     Address
                                 </label>
                                 <textarea
-                                    rows="4"
+                                    rows="1"
+                                    name='address'
+                                     onChange={handleChange}
                                     placeholder="Enter address"
-                                    class="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                                    className="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
                                 ></textarea>
                             </div>
 
 
-                            <button
-                                type="submit"
-                                class="w-full bg-blue-600 text-white py-2 rounded-md hover:bg-blue-700 transition"
-                            >
-                                Save Employee
-                            </button>
+                          <button type='button' onClick={
+                               handleClick
+                          }>save</button>
+                                
+                            
 
-                        </form>
+                       
                     </div>
                 </div>
             </div>
