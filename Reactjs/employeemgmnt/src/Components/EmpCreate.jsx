@@ -12,8 +12,8 @@ function EmpCreate() {
         })
     }
 
-    const handleClick=async()=>{
-      
+    const handleClick=async(e)=>{
+        e.preventDefault();
         try {
                const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
       
@@ -51,7 +51,7 @@ function EmpCreate() {
                         
 
                             <div>
-                                <label class="block text-sm font-medium text-gray-700 mb-1">
+                                <label className="block text-sm font-medium text-gray-700 mb-1">
                                     Employee Name
                                 </label>
                                 <input
