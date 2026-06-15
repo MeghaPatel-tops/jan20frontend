@@ -1,9 +1,10 @@
 import axios from 'axios';
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useMemo, useState } from 'react'
 import { NavLink } from 'react-router-dom'
 
 function Employee() {
     const [ emp,setEmp] = useState([]);
+    const [search,setSearch]=useState("");
 
     const getEmp = async()=>{
         try {
@@ -29,12 +30,37 @@ function Employee() {
         }
     }
 
+    const handleChange = (e)=>{
+         setSearch(e.target.value)
+    }
+
+    const filterEmp = useMemo(()=>{
+        let newEmpArray = [];
+         if(search != ""){
+             newEmpArray = emp.filter((index,i)=>{
+                if(index.empname.toLowerCase().includes(search.toLowerCase())){
+                    return index;
+                }
+         })
+         }
+         else{
+             newEmpArray=emp;
+         }
+         console.log(newEmpArray);
+         
+         return newEmpArray;
+    },[search,emp])
+
     useEffect(()=>{
         getEmp()
     },[])
   return (
     <div >
         <NavLink to={'/create'}>Create new</NavLink>
+        <div style={{display:'flex',justifyContent:'flex-start'}}>
+            <input type="text" name="" id="" onChange={handleChange} placeholder='search here '/>
+        </div>
+        
         <table>
             <thead>
                 <tr>
@@ -45,7 +71,7 @@ function Employee() {
             </thead>
             <tbody>
                 {
-                     emp && emp.map((index,i)=>(
+                     filterEmp && filterEmp.map((index,i)=>(
                         <tr>
                             <td>{index.empname}</td>
                             <td>{index.email}</td>
