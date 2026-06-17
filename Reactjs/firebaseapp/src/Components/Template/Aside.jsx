@@ -8,13 +8,8 @@ function Aside() {
 
         <nav className="space-y-3">
           <NavLink to={'/'} className="block px-3 py-2 rounded hover:bg-gray-800 transition">Dashboard</NavLink>
-
-          <a
-            href="#"
-            className="block px-3 py-2 rounded hover:bg-gray-800 transition"
-          >
-            Users
-          </a>
+           <NavLink to={'/user'} className="block px-3 py-2 rounded hover:bg-gray-800 transition">Users</NavLink>
+          
 
         
           <NavLink to={'/product'} className="block px-3 py-2 rounded hover:bg-gray-800 transition">Products</NavLink>

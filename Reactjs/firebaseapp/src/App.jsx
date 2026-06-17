@@ -5,6 +5,8 @@ import Home from './Components/Home'
 import Product from './Components/Product'
 import {Routes,Route} from 'react-router-dom'
 import ProductCreate from './Components/ProductCreate'
+import User from './Components/User'
+import ProductEdit from './Components/ProductEdit'
 
 
 function App() {
@@ -26,6 +28,8 @@ function App() {
             <Route path="/" element={<Home/>}></Route>
              <Route path="/product" element={<Product/>}></Route>
              <Route path="/product/create" element={<ProductCreate/>}></Route>
+              <Route path="/product/edit/:id" element={<ProductEdit/>}></Route>
+             <Route path='/user' element={<User/>}></Route>
           </Routes>
           
         </main>
