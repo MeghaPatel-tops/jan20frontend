@@ -1,4 +1,5 @@
 import React from 'react'
+import { NavLink } from 'react-router-dom'
 
 function Header() {
   return (
@@ -7,9 +8,8 @@ function Header() {
             MyLogo
           </div>
 
-          <button className="bg-blue-600 text-white px-5 py-2 rounded-lg hover:bg-blue-700 transition">
-            Login
-          </button>
+         <NavLink to={'/login'} className="bg-blue-600 text-white px-5 py-2 rounded-lg hover:bg-blue-700 transition">Login</NavLink>
+         
         </header>
 
   )

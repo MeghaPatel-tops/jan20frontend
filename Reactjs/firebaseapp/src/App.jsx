@@ -7,6 +7,8 @@ import {Routes,Route} from 'react-router-dom'
 import ProductCreate from './Components/ProductCreate'
 import User from './Components/User'
 import ProductEdit from './Components/ProductEdit'
+import Login from './Components/Login'
+import Profile from './Components/Template/Profile'
 
 
 function App() {
@@ -30,6 +32,9 @@ function App() {
              <Route path="/product/create" element={<ProductCreate/>}></Route>
               <Route path="/product/edit/:id" element={<ProductEdit/>}></Route>
              <Route path='/user' element={<User/>}></Route>
+
+             <Route path='/login' element={<Login/>}></Route>
+             <Route path='/profile' element={<Profile/>}></Route>
           </Routes>
           
         </main>
