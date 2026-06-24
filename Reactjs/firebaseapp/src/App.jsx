@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useContext, useState } from 'react'
 import Aside from './Components/Template/Aside'
 import Header from './Components/Template/Header'
 import Home from './Components/Home'
@@ -9,10 +9,12 @@ import User from './Components/User'
 import ProductEdit from './Components/ProductEdit'
 import Login from './Components/Login'
 import Profile from './Components/Template/Profile'
+import AuthProvide, { AuthContext } from './Components/AuthContext'
 
 
 function App() {
   const [count, setCount] = useState(0)
+
 
   return (
     <>
@@ -27,14 +29,20 @@ function App() {
         {/* Main Content */}
         <main className="flex-1 p-6">
           <Routes>
-            <Route path="/" element={<Home/>}></Route>
+          
              <Route path="/product" element={<Product/>}></Route>
              <Route path="/product/create" element={<ProductCreate/>}></Route>
               <Route path="/product/edit/:id" element={<ProductEdit/>}></Route>
              <Route path='/user' element={<User/>}></Route>
 
+
+           
+              
+                <Route path="/" element={<Home/>}></Route>
              <Route path='/login' element={<Login/>}></Route>
              <Route path='/profile' element={<Profile/>}></Route>
+           
+
           </Routes>
           
         </main>

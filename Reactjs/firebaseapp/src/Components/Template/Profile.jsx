@@ -1,10 +1,40 @@
-import React, { useEffect } from 'react'
-import { checkAuth, logout } from '../comman/AuthChecker'
+import React, { useContext, useEffect } from 'react'
+import { checkAuth } from '../comman/AuthChecker'
 import { useNavigate } from 'react-router-dom';
+import { collection, deleteDoc, getDoc, getDocs, query, where, doc } from "firebase/firestore";
+import db from "../../firebase/db";
+import { AuthContext } from '../AuthContext';
+
 
 function Profile() {
     const navigate= useNavigate();
+      const {isLogged, setIsLogged} = useContext(AuthContext)
+    
    
+     const logout = async () => {
+    
+
+    try {
+        let loggedUser = localStorage.getItem('loggedUser');
+        loggedUser = JSON.parse(loggedUser)
+        let q = query(collection(db, 'user_token'), where('uid', "==", loggedUser.uid), where('token', "==", loggedUser.token));
+
+
+        let queryDoc = await getDocs(q);
+        queryDoc.forEach(async (doc1) => {
+            console.log(doc1.id);
+            await deleteDoc(doc(db, "user_token", doc1.id));
+
+        });
+        localStorage.removeItem('loggedUser')
+        setIsLogged(false)
+        navigate('/login')
+
+    } catch (error) {
+        console.log(error);
+
+    }
+}
 
     useEffect(()=>{
         if(checkAuth){

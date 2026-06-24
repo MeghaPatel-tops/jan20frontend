@@ -1,10 +1,13 @@
 import { signInWithPopup } from 'firebase/auth';
-import React from 'react'
+import React, { useContext } from 'react'
 import db, { Auth, provider } from '../firebase/db';
 import { addDoc, collection } from 'firebase/firestore';
 import { useNavigate } from 'react-router-dom';
+import { AuthContext } from './AuthContext';
 
 function Login() {
+  const {isLogged, setIsLogged} = useContext(AuthContext)
+
 
     const navigate = useNavigate();
     const loginWithGoogleId  = async()=>{
@@ -23,8 +26,9 @@ function Login() {
 
             localStorage.setItem('loggedUser',JSON.stringify(UserTokenData))
 
-            // alert("Login successfully")
-            // navigate('/profile')
+            alert("Login successfully")
+            setIsLogged(true)
+            navigate('/profile')
             
             
 
@@ -36,7 +40,8 @@ function Login() {
   return (
     <div>
         <div class="min-h-screen flex items-center justify-center bg-gray-100">
-  <form class="bg-white p-6 rounded-lg shadow-md w-80">
+ <div class="bg-white p-6 rounded-lg shadow-md w-80">
+     <form >
     <h2 class="text-2xl font-bold text-center mb-4">Login</h2>
 
     <input
@@ -66,6 +71,8 @@ function Login() {
     >
       Login with google
     </button>
+ </div>
+ 
 </div>
     </div>
   )
