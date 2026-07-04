@@ -73,7 +73,7 @@ function Category() {
             <textarea
                 rows="4"
                 name='description'
-                onChange={handleChange}
+                
                 placeholder="Category Description..."
                 class="w-full mt-2 border rounded-lg px-4 py-3 resize-none"></textarea>
         </div>

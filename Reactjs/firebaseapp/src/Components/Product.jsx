@@ -4,11 +4,13 @@ import { NavLink } from 'react-router-dom'
 import db from '../firebase/db';
 
 
+
 function Product() {
   const [products, setProducts] = useState([]);
   const [msg, setMsg] = useState(null);
    const [err, setErr] = useState(null);
-   const [search,setSearch]= useState(null)
+   const [search,setSearch]= useState(null);
+   
 
    const filterProduct = useMemo(()=>{
      let newArray =[];
@@ -92,6 +94,7 @@ function Product() {
     </div>
      </div>
       <div class="overflow-x-auto bg-white rounded-lg shadow">
+       
         <table class="w-full text-sm text-left">
           <thead class="bg-gray-100 text-gray-700 uppercase">
             <tr>

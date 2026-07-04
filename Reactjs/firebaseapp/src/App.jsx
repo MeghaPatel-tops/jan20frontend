@@ -10,6 +10,7 @@ import ProductEdit from './Components/ProductEdit'
 import Login from './Components/Login'
 import Profile from './Components/Template/Profile'
 import AuthProvide, { AuthContext } from './Components/AuthContext'
+import Counterapp from './Components/Counterapp'
 
 
 function App() {
@@ -41,7 +42,7 @@ function App() {
                 <Route path="/" element={<Home/>}></Route>
              <Route path='/login' element={<Login/>}></Route>
              <Route path='/profile' element={<Profile/>}></Route>
-           
+           <Route path='/counter' element={<Counterapp/>}></Route>
 
           </Routes>
           
