@@ -1,13 +1,22 @@
 import React, { useState } from 'react'
+import { useDispatch, useSelector } from 'react-redux';
+import { createCategory } from '../feature/CategorySlice';
 
 function Category() {
+    const dispatch = useDispatch();
+    const {catMsg,catError,catLoader}=useSelector((state)=>state.category)
     const [singleCat,setSingleCat]=useState({})
     const handleChange= (e)=>{
-        const {name,value}=e.target;
-        setSingleCat({
-            ...singleCat,
-            [name]:value
-        })
+        const {name,value,type,files}=e.target;
+         setSingleCat((prev) => ({
+        ...prev,
+        [name]: type === "file" ? files[0] : value,
+    }));
+    }
+
+    const handleSubmit = (e)=>{
+        console.log(singleCat);
+        dispatch(createCategory(singleCat))
     }
   return (
     <div>
@@ -20,7 +29,17 @@ function Category() {
                 Add, Edit and Manage Travel Categories
             </p>
         </div>
-
+ <div class="flex justify-between items-center mb-8">
+      {
+         catLoader && <p>Loading...</p>
+      }
+      {
+        catError && <p style={{color:"red"}}>{catLoader.message}</p>
+      }
+       {
+        catMsg && <p style={{color:"green"}}>{catMsg}</p>
+      }
+ </div>
         <button
             class="bg-blue-600 hover:bg-blue-700 text-white px-5 py-3 rounded-lg font-medium">
             + Add Category
@@ -60,7 +79,9 @@ function Category() {
                 <label class="font-medium">Category Image</label>
                 <input
                     type="file"
-                    class="w-full mt-2 border rounded-lg p-2"/>
+                    name="catimg"
+                    class="w-full mt-2 border rounded-lg p-2"
+                     onChange={handleChange}/>
             </div>
 
           
@@ -81,7 +102,7 @@ function Category() {
         <div class="mt-6">
 
             <button
-                class="bg-green-600 hover:bg-green-700 text-white px-8 py-3 rounded-lg">
+                class="bg-green-600 hover:bg-green-700 text-white px-8 py-3 rounded-lg" onClick={handleSubmit}>
                 Save Category
             </button>
 
