@@ -1,23 +1,53 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
-import { createCategory } from '../feature/CategorySlice';
+import { createCategory, delCategory, getCategory } from '../feature/CategorySlice';
 
 function Category() {
     const dispatch = useDispatch();
-    const {catMsg,catError,catLoader}=useSelector((state)=>state.category)
+    const {catMsg,catError,catLoader,categoryArray}=useSelector((state)=>state.category)
     const [singleCat,setSingleCat]=useState({})
     const handleChange= (e)=>{
         const {name,value,type,files}=e.target;
-         setSingleCat((prev) => ({
-        ...prev,
-        [name]: type === "file" ? files[0] : value,
-    }));
+        if(type==='file'){
+            const file = e.target.files[0];
+
+           
+
+            const maxSize = 2 * 1024 * 1024; // 2 MB
+
+            if (file.size > maxSize) {
+                alert("File size must be less than 2 MB.");
+                fileInput.value = ""; // Clear selected file
+                return;
+            }
+            const reader = new FileReader();
+
+            reader.readAsDataURL(file);
+
+            reader.onload = () => {
+                console.log(reader.result); // Base64 string
+                setSingleCat({
+                    ...singleCat,
+                    [name]:reader.result
+                })
+            };
+        }
+        else{
+             setSingleCat({
+                ...singleCat,
+                 [name]:value
+             })
+        }
     }
 
     const handleSubmit = (e)=>{
         console.log(singleCat);
         dispatch(createCategory(singleCat))
     }
+
+    useEffect(()=>{
+        dispatch(getCategory())
+    },[catMsg])
   return (
     <div>
           <div class="flex justify-between items-center mb-8">
@@ -28,17 +58,20 @@ function Category() {
             <p class="text-gray-500 mt-1">
                 Add, Edit and Manage Travel Categories
             </p>
-        </div>
- <div class="flex justify-between items-center mb-8">
-      {
+           <div>
+             {
          catLoader && <p>Loading...</p>
       }
       {
         catError && <p style={{color:"red"}}>{catLoader.message}</p>
       }
        {
-        catMsg && <p style={{color:"green"}}>{catMsg}</p>
+        catMsg && <p style={{color:"green"}} className='text-3xl'>{catMsg}</p>
       }
+           </div>
+        </div>
+ <div class="flex justify-between items-center mb-8">
+     
  </div>
         <button
             class="bg-blue-600 hover:bg-blue-700 text-white px-5 py-3 rounded-lg font-medium">
@@ -148,9 +181,7 @@ function Category() {
                         Slug
                     </th>
 
-                    <th class="px-6 py-4 text-left">
-                        Status
-                    </th>
+                    
 
                     <th class="px-6 py-4 text-left">
                         Action
@@ -162,34 +193,29 @@ function Category() {
 
                 <tbody>
 
-                <tr class="border-t hover:bg-gray-50">
+              
+                {
+                    categoryArray && categoryArray.map((index,i)=>(
+                         <tr class="border-t hover:bg-gray-50">
 
-                    <td class="px-6 py-4">1</td>
+                    <td class="px-6 py-4">{i+1}</td>
 
                     <td class="px-6 py-4">
 
                         <img
-                            src="https://picsum.photos/60"
-                            class="rounded-lg h-14 w-14 object-cover"/>
+                            src={index.catimg}  style={{height:'100px',width:'100px'}}/>
 
                     </td>
 
                     <td class="px-6 py-4 font-medium">
-                        Adventure
+                       {index.name}
                     </td>
 
                     <td class="px-6 py-4">
-                        adventure
+                       {index.slug}
                     </td>
 
-                    <td class="px-6 py-4">
-
-                        <span class="bg-green-100 text-green-700 px-3 py-1 rounded-full text-sm">
-                            Active
-                        </span>
-
-                    </td>
-
+                 
                     <td class="px-6 py-4 space-x-2">
 
                         <button
@@ -198,57 +224,17 @@ function Category() {
                         </button>
 
                         <button
-                            class="bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded">
+                            class="bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded" onClick={()=>{
+                                dispatch(delCategory(index.id))
+                            }}>
                             Delete
                         </button>
 
                     </td>
 
                 </tr>
-
-                <tr class="border-t hover:bg-gray-50">
-
-                    <td class="px-6 py-4">2</td>
-
-                    <td class="px-6 py-4">
-
-                        <img
-                            src="https://picsum.photos/61"
-                            class="rounded-lg h-14 w-14 object-cover"/>
-
-                    </td>
-
-                    <td class="px-6 py-4 font-medium">
-                        Beach Tours
-                    </td>
-
-                    <td class="px-6 py-4">
-                        beach-tours
-                    </td>
-
-                    <td class="px-6 py-4">
-
-                        <span class="bg-red-100 text-red-700 px-3 py-1 rounded-full text-sm">
-                            Inactive
-                        </span>
-
-                    </td>
-
-                    <td class="px-6 py-4 space-x-2">
-
-                        <button
-                            class="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded">
-                            Edit
-                        </button>
-
-                        <button
-                            class="bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded">
-                            Delete
-                        </button>
-
-                    </td>
-
-                </tr>
+                    ))
+                }
 
                 </tbody>
 
