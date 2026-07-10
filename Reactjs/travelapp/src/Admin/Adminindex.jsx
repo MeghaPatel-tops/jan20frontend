@@ -4,6 +4,7 @@ import Header from './Partials/Header'
 import Dashbord from './Dashbord'
 import { Route, Routes } from 'react-router-dom'
 import Category from './Category'
+import Destination from './Destination'
 
 function Adminindex() {
   return (
@@ -18,6 +19,7 @@ function Adminindex() {
                         <Routes>
                             <Route path='/' element={<Dashbord/>}></Route>
                              <Route path='/category' element={<Category/>}></Route>
+                             <Route path='/destination' element={<Destination/>}></Route>
                         </Routes>
                     </main>
                   </div>

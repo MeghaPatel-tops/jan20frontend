@@ -21,7 +21,7 @@ function SideBar() {
 
           <NavLink to='/admin/' className="flex items-center px-6 py-3 hover:bg-slate-800 bg-slate-800"> Hotels</NavLink>
 
-           <NavLink to='/admin/' className="flex items-center px-6 py-3 hover:bg-slate-800 bg-slate-800"> Destination </NavLink>
+           <NavLink to='/admin/destination' className="flex items-center px-6 py-3 hover:bg-slate-800 bg-slate-800"> Destination </NavLink>
 
            <NavLink to='/admin/Category' className="flex items-center px-6 py-3 hover:bg-slate-800 bg-slate-800"> Category</NavLink>
 

@@ -1,7 +1,7 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 
 import db,{storage} from "../Firebase/db";
-import { addDoc, collection, deleteDoc, doc, getDocs } from "firebase/firestore";
+import { addDoc, collection, deleteDoc, doc, getDoc, getDocs, updateDoc } from "firebase/firestore";
 import { getDownloadURL, ref, uploadBytes } from "firebase/storage";
 
 export const createCategory = createAsyncThunk('createCategory',async(data,{rejectWithValue})=>{
@@ -10,7 +10,7 @@ export const createCategory = createAsyncThunk('createCategory',async(data,{reje
        
         let docRef =  collection(db,"TravelCategory");
         const res = await addDoc(docRef,{
-            name:data.categoryname,
+            name:data.name,
             slug:data.slug,
             catimg:data.catimg
         });
@@ -40,6 +40,28 @@ export const getCategory= createAsyncThunk('getCategory',async()=>{
     }
 })
 
+export const getCategoryById= createAsyncThunk('getCategoryById',async(id)=>{
+    try {
+        let docRef = doc(db,'TravelCategory',id);
+
+        let catData = await getDoc(docRef)
+
+        return catData.data();
+    } catch (error) {
+        return error
+    }
+})
+
+export const updateCategory = createAsyncThunk('updateCategory',async(data)=>{
+    try {
+        const docRef = doc(db,'TravelCategory',data.id);
+        const res = await updateDoc(docRef,data.cat)
+        return {msg:"Updated successfully!"}
+    } catch (error) {
+        return error
+    }
+})
+
 export const delCategory = createAsyncThunk('delCategory',async(id)=>{
     try {
         const docRef = doc(db,'TravelCategory',id);
@@ -59,7 +81,15 @@ const CategorySlice = createSlice({
         catLoader:false,
         categoryArray:[]
     },
-    reducers:{},
+    reducers:{
+         clearMessage: (state) => {
+            state.catMsg = null;
+            state.catError = null;
+        },
+        clearSingleCategory: (state) => {
+            state.singleCategory = {};
+        }
+    },
     extraReducers:(builder)=>{
         builder.addCase(createCategory.pending,(state,action)=>{
             state.catLoader=true;
@@ -96,8 +126,34 @@ const CategorySlice = createSlice({
              state.catLoader=false;
              state.catError=action.payload;
         })
+        .addCase(getCategoryById.pending,(state,action)=>{
+            state.catLoader=true;
+        })
+        .addCase(getCategoryById.fulfilled,(state,action)=>{
+            
+             state.catLoader=false;
+             state.singleCategory=action.payload;
+        })
+         .addCase(getCategoryById.rejected,(state,action)=>{
+             state.catLoader=false;
+             state.catError=action.payload;
+        }).addCase(updateCategory.pending,(state,action)=>{
+            state.catLoader=true;
+        })
+        .addCase(updateCategory.fulfilled,(state,action)=>{
+            
+             state.catLoader=false;
+             state.catMsg=action.payload.msg;
+             state.singleCategory=null
+        })
+         .addCase(updateCategory.rejected,(state,action)=>{
+             state.catLoader=false;
+             state.catError=action.payload;
+        })
     }
 })
 
 const CategoryReducer = CategorySlice.reducer;
+export const { clearMessage, clearSingleCategory } = CategorySlice.actions;
+
 export default CategoryReducer

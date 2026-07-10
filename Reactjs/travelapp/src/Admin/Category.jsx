@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
-import { createCategory, delCategory, getCategory } from '../feature/CategorySlice';
+import { createCategory, delCategory, getCategory, getCategoryById, updateCategory } from '../feature/CategorySlice';
+import { clearMessage,clearSingleCategory } from '../feature/CategorySlice';
 
 function Category() {
     const dispatch = useDispatch();
-    const {catMsg,catError,catLoader,categoryArray}=useSelector((state)=>state.category)
+    const {catMsg,catError,catLoader,categoryArray,singleCategory}=useSelector((state)=>state.category)
+    const [edit,setEdit]= useState(null)
     const [singleCat,setSingleCat]=useState({})
     const handleChange= (e)=>{
         const {name,value,type,files}=e.target;
@@ -43,11 +45,46 @@ function Category() {
     const handleSubmit = (e)=>{
         console.log(singleCat);
         dispatch(createCategory(singleCat))
+
     }
+
+    const editCategory=(id)=>{
+        setEdit(id);
+        dispatch(getCategoryById(id))
+    }
+
+    const handleUpdate = async(e)=>{
+         await dispatch(updateCategory({id:edit,cat:singleCat}));
+         dispatch(getCategory())
+         setEdit(null)
+         setSingleCat({})
+         dispatch(clearSingleCategory())
+
+         setTimeout(()=>{
+            dispatch(clearMessage())
+           // alert("mmnmnbmnb")
+         },2000)
+
+    }
+   useEffect(() => {
+    if (edit !== null) {
+        setSingleCat(singleCategory);
+    }
+}, [singleCategory, edit]);
+
+    
 
     useEffect(()=>{
         dispatch(getCategory())
-    },[catMsg])
+        
+    },[])
+
+    useEffect(() => {
+    return () => {
+        dispatch(clearMessage());
+        dispatch(clearSingleCategory());
+    };
+}, []);
   return (
     <div>
           <div class="flex justify-between items-center mb-8">
@@ -66,7 +103,7 @@ function Category() {
         catError && <p style={{color:"red"}}>{catLoader.message}</p>
       }
        {
-        catMsg && <p style={{color:"green"}} className='text-3xl'>{catMsg}</p>
+        catMsg && <p style={{color:"green"}} className='text-3xl'>{catMsg ?? ""}</p>
       }
            </div>
         </div>
@@ -92,8 +129,9 @@ function Category() {
                 <label class="font-medium">Category Name</label>
                 <input
                     type="text"
-                    name='categoryname'
+                    name='name'
                     onChange={handleChange}
+                    value={singleCat.name ?? ""}
                     placeholder="Adventure"
                     class="w-full mt-2 border rounded-lg px-4 py-3 focus:ring-2 focus:ring-blue-500 outline-none"/>
             </div>
@@ -105,14 +143,22 @@ function Category() {
                     name='slug'
                     onChange={handleChange}
                     placeholder="adventure"
+                    value={singleCat.slug ?? ""}
                     class="w-full mt-2 border rounded-lg px-4 py-3 focus:ring-2 focus:ring-blue-500 outline-none"/>
             </div>
 
             <div>
                 <label class="font-medium">Category Image</label>
+                {
+                    edit!=null ?
+                    <img src={singleCat.catimg} height={"50px"} width={"50px"}></img>
+                    :
+                    ''
+                }
                 <input
                     type="file"
                     name="catimg"
+                  
                     class="w-full mt-2 border rounded-lg p-2"
                      onChange={handleChange}/>
             </div>
@@ -121,23 +167,22 @@ function Category() {
 
         </div>
 
-        <div class="mt-6">
-            <label class="font-medium">Description</label>
-
-            <textarea
-                rows="4"
-                name='description'
-                
-                placeholder="Category Description..."
-                class="w-full mt-2 border rounded-lg px-4 py-3 resize-none"></textarea>
-        </div>
+      
 
         <div class="mt-6">
 
-            <button
+         {
+             edit===null ?
+                <button
                 class="bg-green-600 hover:bg-green-700 text-white px-8 py-3 rounded-lg" onClick={handleSubmit}>
                 Save Category
             </button>
+            :
+            <button
+                class="bg-green-600 hover:bg-green-700 text-white px-8 py-3 rounded-lg" onClick={handleUpdate}>
+                Update Category
+            </button>
+         }
 
         </div>
 
@@ -219,7 +264,11 @@ function Category() {
                     <td class="px-6 py-4 space-x-2">
 
                         <button
-                            class="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded">
+                            class="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded" onClick={
+                                ()=>{
+                                    editCategory(index.id)
+                                }
+                            }>
                             Edit
                         </button>
 
