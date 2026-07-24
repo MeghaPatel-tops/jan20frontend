@@ -5,6 +5,7 @@ import Dashbord from './Dashbord'
 import { Route, Routes } from 'react-router-dom'
 import Category from './Category'
 import Destination from './Destination'
+import Hotel from './Hotel'
 
 function Adminindex() {
   return (
@@ -20,6 +21,7 @@ function Adminindex() {
                             <Route path='/' element={<Dashbord/>}></Route>
                              <Route path='/category' element={<Category/>}></Route>
                              <Route path='/destination' element={<Destination/>}></Route>
+                             <Route path='/hotel' element={<Hotel/>}></Route>
                         </Routes>
                     </main>
                   </div>
