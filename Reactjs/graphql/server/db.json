@@ -1,0 +1,83 @@
+{
+  "product": [
+    {
+      "id": "1",
+      "pname": "Laptop",
+      "price": 40000.99,
+      "desc": "High-performance laptop with 16GB RAM and 512GB SSD."
+    },
+    {
+      "id": "2",
+      "pname": "Smartphone",
+      "price": 24999.5,
+      "desc": "5G smartphone with AMOLED display and 128GB storage."
+    },
+    {
+      "id": "3",
+      "pname": "Wireless Mouse",
+      "price": 799.99,
+      "desc": "Ergonomic wireless mouse with adjustable DPI."
+    },
+    {
+      "id": "4",
+      "pname": "Mechanical Keyboard",
+      "price": 3499,
+      "desc": "RGB mechanical keyboard with blue switches."
+    },
+    {
+      "id": "5",
+      "pname": "Smart Watch",
+      "price": 5999.99,
+      "desc": "Fitness smartwatch with heart rate monitoring."
+    },
+    {
+      "id": "6",
+      "pname": "Bluetooth Speaker",
+      "price": 1999.5,
+      "desc": "Portable Bluetooth speaker with deep bass."
+    },
+    {
+      "id": "7",
+      "pname": "Gaming Headset",
+      "price": 2799.99,
+      "desc": "Surround sound gaming headset with noise-canceling mic."
+    },
+    {
+      "id": "8",
+      "pname": "Monitor",
+      "price": 12499,
+      "desc": "24-inch Full HD IPS monitor with 75Hz refresh rate."
+    },
+    {
+      "id": "9",
+      "pname": "External SSD",
+      "price": 6499.99,
+      "desc": "1TB USB-C external SSD with high-speed data transfer."
+    },
+    {
+      "id": "10",
+      "pname": "Webcam",
+      "price": 1599,
+      "desc": "1080p Full HD webcam with built-in microphone."
+    },
+    {
+      "pname": "Dress punjabi",
+      "price": 1230,
+      "desc": "cxvxcvxcvxc",
+      "id": "HRB2VboCHHc"
+    },
+    {
+      "pname": "apple",
+      "price": 1230,
+      "desc": "kasmiri apple",
+      "id": "60Pspl1s0Ig"
+    },
+    {
+      "pname": "Keyboard tvs",
+      "price": 1200,
+      "desc": "Tvs",
+      "id": "65xuzt4coGo"
+    }
+  ],
+  "$schema": "./node_modules/json-server/schema.json"
+}

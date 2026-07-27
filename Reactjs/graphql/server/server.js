@@ -1,6 +1,7 @@
 const { gql, ApolloServer } = require('apollo-server-express');
 const express = require('express');
-const products = require('./Product.js')
+const products = require('./Product.js');
+const { default: axios } = require('axios');
 
 const app = express();
 
@@ -16,11 +17,24 @@ const typeDefs  = gql `
         Products:[Product]
     }
 
+    type Mutation{
+        addProduct(pname:String!,price:Float!,desc:String!):Product
+    }
+
 `
 
 const resolvers ={
     Query:{
-        Products:()=>products
+        Products:async()=>{
+              let res = await axios.get('http://localhost:3000/product')
+              return res.data;
+        }
+    },
+    Mutation:{
+        addProduct:async(_,{pname,price,desc})=>{
+            let res = await axios.post('http://localhost:3000/product',{pname,price,desc});
+            return res.data.product;
+        }
     }
 }
 
