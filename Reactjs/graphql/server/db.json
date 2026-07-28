@@ -1,12 +1,6 @@
 {
   "product": [
     {
-      "id": "1",
-      "pname": "Laptop",
-      "price": 40000.99,
-      "desc": "High-performance laptop with 16GB RAM and 512GB SSD."
-    },
-    {
       "id": "2",
       "pname": "Smartphone",
       "price": 24999.5,

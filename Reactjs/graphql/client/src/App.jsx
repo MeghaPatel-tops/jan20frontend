@@ -10,6 +10,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.bundle.min';
 import Productcreate from './Productcreate'
 import { Route, Routes } from 'react-router-dom'
+import ProductEdit from './ProductEdit'
 
 function App() {
   const [count, setCount] = useState(0)
@@ -29,6 +30,7 @@ function App() {
               <Route path='/' element={<Productindex/>}>
               </Route>
               <Route path='/create' element={ <Productcreate/>}></Route>
+              <Route path="/edit/:pid" element={<ProductEdit/>}></Route>
           </Routes>
         </ApolloProvider>
      </>

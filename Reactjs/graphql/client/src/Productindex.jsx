@@ -1,11 +1,21 @@
 import React from 'react'
-import { GET_PRODUCT } from './util'
-import {useQuery} from '@apollo/client/react'
+import { DELTE_PRODUCT, GET_PRODUCT } from './util'
+import {useMutation, useQuery} from '@apollo/client/react'
 import { NavLink } from 'react-router-dom';
 
 function Productindex() {
     const {loading,data,error} = useQuery(GET_PRODUCT);
    console.log(data);
+   const [ delPro] = useMutation(DELTE_PRODUCT,{
+  refetchQueries: [{ query: GET_PRODUCT }],
+})
+
+   const delProd = async(id)=>{
+    alert(id)
+       await delPro({
+        variables: { id }
+       })
+   }
    
     if (loading) {
     return (
@@ -43,17 +53,26 @@ function Productindex() {
                 <th>Product Name</th>
                 <th>Price</th>
                 <th>Description</th>
+                <th>Action</th>
               </tr>
             </thead>
 
             <tbody>
-              {data.Products.length > 0 ? (
+              { data && data.Products.length > 0 ? (
                 data.Products.map((item, index) => (
                   <tr key={item.id}>
                     <td>{index + 1}</td>
                     <td>{item.pname}</td>
                     <td>₹{item.price}</td>
                     <td>{item.desc}</td>
+                    <td>
+                      <NavLink to={'/edit/'+item.id} className="btn btn-success">Edit</NavLink>
+                    </td>
+                    <td>
+                      <button className='btn btn-danger' onClick={()=>{
+                        delProd(item.id)
+                      }}>Delete</button>
+                    </td>
                   </tr>
                 ))
               ) : (
