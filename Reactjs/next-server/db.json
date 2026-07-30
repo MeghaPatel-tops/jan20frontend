@@ -1,0 +1,20 @@
+{
+  "posts": [
+    {
+      "postname": "post12345566",
+      "description": "test post",
+      "id": "Rwvy1Zccyz4"
+    },
+    {
+      "postname": "post3",
+      "description": "post 3 test",
+      "id": "JMb6JbkMdVM"
+    },
+    {
+      "postname": "post4",
+      "description": "dxfddfgdf",
+      "id": "zHEJDDdb1sY"
+    }
+  ],
+  "$schema": "./node_modules/json-server/schema.json"
+}
